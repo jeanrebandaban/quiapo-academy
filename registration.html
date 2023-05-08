@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+        crossorigin="anonymous"></script>
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="reg_body">
+
+    <section class="vh-100 bg-image" style="background-image: url(images/bg.jpg); opacity: .8;">
+        <div class="mask d-flex align-items-center h-100">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                        <div class="card" style="border-radius: 15px; opacity: .9;">
+                            <div class="card-body p-5">
+                                <div class="image_logo">
+                                    <img src="images/qa_logo.png">
+                                </div>
+                                <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link active" id="tab-login" data-mdb-toggle="pill"
+                                            href="#pills-login" role="tab" aria-controls="pills-login"
+                                            aria-selected="true">Login</a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link" id="tab-register" data-mdb-toggle="pill"
+                                            href="#pills-register" role="tab" aria-controls="pills-register"
+                                            aria-selected="false">Register</a>
+                                    </li>
+                                </ul>
+                                <!-- Pills navs -->
+                                <!-- Pills content -->
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="pills-login" role="tabpanel"
+                                        aria-labelledby="tab-login">
+                                        <form name="loginForm" id="loginForm">
+
+
+                                            <!-- Email input -->
+                                            <div class="form-outline mb-4">
+                                                <input type="text" id="loginName" name="loginValue"
+                                                    class="form-control reg_input" required />
+                                                <label class="form-label" for="loginName">Email or student
+                                                    number</label>
+                                            </div>
+
+                                            <!-- Password input -->
+                                            <div class="form-outline mb-4">
+                                                <input type="password" id="loginPassword" name="loginPass"
+                                                    class="form-control reg_input" required />
+                                                <label class="form-label" for="loginPassword">Password</label>
+                                            </div>
+
+                                            <!-- 2 column grid layout -->
+                                            <div class="row mb-4">
+                                                <div class="col-md-6 d-flex justify-content-center">
+                                                    <!-- Checkbox -->
+                                                    <div class="form-check mb-3 mb-md-0">
+                                                        <input class="form-check-input" type="checkbox" name="remember"
+                                                            value="" id="loginCheck" checked />
+                                                        <label class="form-check-label" for="loginCheck"> Remember me
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6 d-flex justify-content-center">
+                                                    <!-- Simple link -->
+                                                    <a href="#!">Forgot password?</a>
+                                                </div>
+                                            </div>
+
+                                            <!-- Submit button --><br>
+                                            <button type="submit" class="reg_btn btn btn-primary btn-block mb-3">Sign
+                                                in</button>
+                                        </form>
+                                    </div>
+
+                                    <!-- Registration Form -->
+                                    <div class="tab-pane fade ex3" id="pills-register" role="tabpanel"
+                                        aria-labelledby="tab-register">
+
+                                        <form action="" name="registrationForm" id="registrationForm"
+                                            onsubmit="return validateForm()">
+                                            <div class="form-outline mb-2">
+                                                <label class="form-label" for="user-type" id="appRadio">Application
+                                                    Type: &nbsp;&nbsp;
+                                                    <input type="radio" name="user-type" value="student"
+                                                        checked>&nbsp;Student&nbsp;&nbsp;
+                                                    <input type="radio" name="user-type"
+                                                        value="teacher">&nbsp;Teacher</label>
+                                            </div>
+                                            <div class="form-outline mb-2">
+                                                <label class="form-label" for="user-type">Please provide the required
+                                                    information below.</label>
+                                            </div>
+
+                                            <!-- Name input -->
+                                            <div class="form-outline mb-4">
+                                                <input type="text" id="registerFName" class="form-control reg_input"
+                                                    name="regFName" required />
+                                                <label class="form-label" for="registerName">First Name</label>
+                                            </div>
+                                            <div class="form-outline mb-4">
+                                                <input type="text" id="registerLName" class="form-control reg_input"
+                                                    name="regLName" required />
+                                                <label class="form-label" for="registerName">Last Name</label>
+                                            </div>
+
+                                            <!-- Email input -->
+                                            <div class="form-outline mb-4">
+                                                <input type="email" id="registerEmail" class="form-control reg_input"
+                                                    name="regEmail" required />
+                                                <label class="form-label" for="registerEmail">Email</label>
+                                            </div>
+                                            <div class="form-outline mb-4">
+                                                <input type="tel" id="typePhone" name="regContact" class="form-control"
+                                                    required />
+                                                <label class="form-label" for="typePhone">Contact Number</label>
+                                            </div>
+
+
+                                            <!-- Password input -->
+                                            <div class="form-outline mb-4">
+                                                <input type="password" id="registerPassword"
+                                                    class="form-control reg_input" name="regPass" required />
+                                                <label class="form-label" for="registerPassword">Password</label>
+                                            </div>
+
+                                            <!-- Repeat Password input -->
+                                            <div class="form-outline mb-4">
+                                                <input type="password" id="registerRepeatPassword" name="regPass2"
+                                                    class="form-control" required />
+                                                <label class="form-label" for="registerRepeatPassword">Repeat
+                                                    password</label>
+                                            </div>
+
+                                            <div class="row mb-4">
+                                                <div class="col-md-6 d-flex justify-content-center">
+
+                                                    <div class="form-check mb-3 mb-md-0">
+                                                        <label for="birthdate" name="regBdate"
+                                                            class="form-label mb-3 mb-md-0">Birthdate:<br>
+                                                            <input type="date" id="birthdate" required>
+                                                        </label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-5 d-flex justify-content-center">
+                                                    <label for="gender" id="gender" class="form-label">Gender:<br>
+                                                        <input type="radio" name="gender" value="Male"
+                                                            required>&nbsp;Male&nbsp;&nbsp;
+                                                        <input type="radio" name="gender" value="Female"
+                                                            required>&nbsp;Female
+                                                    </label>
+                                                </div>
+                                            </div>
+
+
+                                            <div id="student-fields">
+                                                <div class="row mb-2">
+                                                    <div class="col-md-5 mt-2 ms-4">
+
+                                                        <div class="dropdown dd mb-4 justify-content-center">
+                                                            <input type="hidden" id="year_input" name="year" />
+                                                            <button class="btn btn-primary dropdown-toggle"
+                                                                type="button" id="yearLevelLabel"
+                                                                data-bs-toggle="dropdown" aria-expanded="false"
+                                                                required>
+                                                                Select Year Level
+                                                            </button>
+                                                            <ul class="dropdown-menu"
+                                                                aria-labelledby="dropdownMenuButton1">
+                                                                <li><a class="dropdown-item" id="yearLabel1"
+                                                                        onclick="setYear(1)">1st year</a></li>
+                                                                <li><a class="dropdown-item" id="yearLabel2"
+                                                                        onclick="setYear(2)">2nd year</a></li>
+                                                                <li><a class="dropdown-item" id="yearLabel3"
+                                                                        onclick="setYear(3)">3rd year</a></li>
+                                                                <li><a class="dropdown-item" id="yearLabel4"
+                                                                        onclick="setYear(4)">4th year</a></li>
+                                                                <li><a class="dropdown-item" id="yearLabel5"
+                                                                        onclick="setYear(5)">5th year</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4 mt-2 ms-4">
+                                                        <div class="dropdown dd mb-4 justify-content-center">
+                                                            <input type="hidden" id="prog_input" name="prog" />
+                                                            <button class="btn btn-outline-primary dropdown-toggle"
+                                                                type="button" id="programLabel"
+                                                                data-bs-toggle="dropdown" aria-expanded="false"
+                                                                required>
+                                                                Select Program
+                                                            </button>
+                                                            <ul class="dropdown-menu"
+                                                                aria-labelledby="dropdownMenuButton1">
+                                                                <li><a class="dropdown-item" id="progLabel1"
+                                                                        onclick="setProgram('BSIT')">BSIT</a></li>
+                                                                <li><a class="dropdown-item" id="progLabel2"
+                                                                        onclick="setProgram('BSCS')">BSCS</a></li>
+                                                                <li><a class="dropdown-item" id="progLabel3"
+                                                                        onclick="setProgram('BSME')">BSME</a></li>
+                                                                <li><a class="dropdown-item" id="progLabel4"
+                                                                        onclick="setProgram('BAA')">BAA</a></li>
+                                                                <li><a class="dropdown-item" id="progLabel5"
+                                                                        onclick="setProgram('BSCE')">BSCE</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+
+
+                                            </div>
+
+                                            <!-- Checkbox -->
+                                            <div class="form-check d-flex justify-content-center mb-4">
+                                                <input class="form-check-input me-2" type="checkbox" value=""
+                                                    id="registerCheck" checked aria-describedby="registerCheckHelpText"
+                                                    required />
+                                                <label class="form-check-label" for="registerCheck">
+                                                    I have read and agree to the terms
+                                                </label>
+                                            </div>
+
+                                            <!-- Submit button -->
+                                            <div>
+
+                                                <div class="mt-2 pt-2">
+                                                    <button class="btn btn-primary btn-block reg_btn" type="submit"
+                                                        value="Submit">Submit</button>
+                                                    <button class="btn btn-secondary btn-block mt-3"
+                                                        style="font-size: 15px;" type="reset"
+                                                        value="reset">Clear</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+
+    <!-- JS -->
+    <script type="text/javascript" src="firebaseInit.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="authentication.js"></script>
+
+    <script>
+
+        document.getElementById("loginForm").addEventListener("submit", login);
+        var user = getLoggedInUser();
+        if (user != null) {
+            if (user["appType"] == "teacher") {
+                window.location.href = "teacher/profile.html";
+            } if (user["appType"] == "student") {
+                window.location.href = "student/profileonly.html";
+            }
+        }
+    </script>
+</body>
+
+</html>

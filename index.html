@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- JS -->
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+    <script type="text/javascript" src="firebaseInit.js"></script>
+
+    <script src="qrScript.js"></script>
+    <script type="text/javascript" src="attendance.js"></script>
+</head>
+
+<body>
+    <!-- Fixed navbar -->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar brand -->
+                <a class="navbar-brand mt-2 mt-lg-0" href="index.html">
+                    <img src="images/qa_logo.png" height="50" alt="QA Logo" loading="lazy" /><a class="nav-link"
+                        href="index.html">Quiapo Academy</a>
+                </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-4 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="myFunction()">Login</a>
+                    </li>
+                </ul>
+                <!-- Left links -->
+            </div>
+            <!-- Collapsible wrapper -->
+
+    </nav>
+
+    <!-- Clock -->
+
+    <div class="grid-container">
+        <div class="row index_row justify-content-center" id="scan">
+            <div class="text-center">
+                <h3>SCAN QR CODE</h3>
+            </div>
+        </div>
+
+        <div class="row index_row  justify-content-center" id="time">
+            <div class="text-center">
+                <h1 id="clock"></h1>
+                <h3 id="date"></h3>
+            </div>
+        </div>
+        <div class="row index_row  justify-content-center">
+            <div class="qrContainer" style="text-align: center;">
+                <div id="reader" style="width: 500px;"></div>
+                <div id="show" style="display: none;"></div>
+            </div>
+        </div>
+        <div class="row justify-content-center" style="background-color: rgb(255, 255, 255)" id="table">
+            <div class="results">
+                <br>
+                <h3 style="display: flex;">Result:</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>
+                                    <div class="">
+                                        <input class="form-control width-100" id="studentNumber" type="text"
+                                            value="Student Number" aria-label="readonly input example" readonly />
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="">
+                                        <input class="form-control width-100" id="program" type="text" value="Program"
+                                            aria-label="readonly input example" readonly />
+                                    </div>
+                                </th>
+
+                                <th>
+                                    <div class="">
+                                        <input class="form-control width-100" id="yearLevel" type="text"
+                                            value="Year Level" aria-label="readonly input example" readonly />
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <div class="">
+                                        <input class="form-control width-100" id="lastName" type="text"
+                                            value="Last Name" aria-label="readonly input example" readonly />
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="">
+                                        <input class="form-control width-100" id="firstName" type="text"
+                                            value="First Name" aria-label="readonly input example" readonly />
+                                    </div>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Status-->
+        <div class="row index_row justify-content-center">
+            <div class="status">
+                <h3 style="display: flex; margin-top: 1%;">STATUS:</h3>
+                <div class="">
+                    <input class="form-control width-100" id="status" type="text" value=""
+                        aria-label="readonly input example" readonly />
+                </div>
+                <p id="status-success" class="hide"></p>
+                <p id="status-error" class="hide"></p>
+            </div>
+        </div>
+        <div class="" style="width: 70%; background-color: white;">
+
+            <!-- Input Text -->
+            <div class="input">
+                <div class="studNum">
+                    <h3 style="display: flex; margin-top: 1%;">Enter Student Number:</h3>
+                </div>
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input class="form-control" style="font-size: larger;" id="studNum" type="text" value=""
+                                aria-label="readonly input example" />
+                        </div>
+                        <div class="col-md-6" style="display:flex">
+                            <button type="button" class="btn btn-dark" id="submit"
+                                onclick="manualSubmit()">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3">
+    </footer>
+    <script>
+        const html5Qrcode = new Html5Qrcode('reader');
+
+        const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+            if (decodedText) {
+                document.getElementById("studentNumber").value = decodedText;
+                onSubmit();
+                html5Qrcode.stop();
+
+                setTimeout(() => {
+                    html5Qrcode.start(
+                        { facingMode: "environment" },
+                        { fps: 10, qrbox: 250 },
+                        qrCodeSuccessCallback,
+                        qrCodeErrorCallback
+                    );
+                }, 1000);
+            }
+        }
+
+        const qrCodeErrorCallback = (errorMessage) => {
+            if (!errorMessage.startsWith("QR code parse error")) {
+                console.error(errorMessage);
+            }
+        };
+
+        html5Qrcode.start(
+            { facingMode: "environment" },
+            { fps: 10, qrbox: 250 },
+            qrCodeSuccessCallback,
+            qrCodeErrorCallback
+        );
+        var time;
+        function updateClock() {
+            let now = new Date();
+            let day = now.toLocaleDateString("en-US", { weekday: "long" });
+            let date = now.toLocaleDateString();
+            time = now.toLocaleTimeString();
+            let clock = document.getElementById("clock");
+            if (clock) {
+                clock.innerText = time;
+            }
+            let dateElement = document.getElementById("date");
+            if (dateElement) {
+                dateElement.innerText = `${day}, ${date}`;
+            }
+        }
+
+        setInterval(updateClock, 1000);
+
+        var input = document.getElementById("studNum");
+        input.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById("submit").click();
+            }
+        });
+
+        function myFunction() {
+            window.open("registration.html");
+        }
+    </script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+</body>
+
+</html>
