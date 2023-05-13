@@ -60,8 +60,7 @@
                                             <div class="form-outline mb-4">
                                                 <input type="text" id="loginName" name="loginValue"
                                                     class="form-control reg_input" required />
-                                                <label class="form-label" for="loginName">Email or student
-                                                    number</label>
+                                                <label class="form-label" for="loginName">Email</label>
                                             </div>
 
                                             <!-- Password input -->
@@ -133,7 +132,7 @@
                                                 <label class="form-label" for="registerEmail">Email</label>
                                             </div>
                                             <div class="form-outline mb-4">
-                                                <input type="tel" id="typePhone" name="regContact" class="form-control"
+                                                <input type="tel" id="typePhone"  pattern="[0-9]{11}" name="regContact" title="Please enter a 10-digit contact number" class="form-control"
                                                     required />
                                                 <label class="form-label" for="typePhone">Contact Number</label>
                                             </div>
@@ -142,13 +141,13 @@
                                             <!-- Password input -->
                                             <div class="form-outline mb-4">
                                                 <input type="password" id="registerPassword"
-                                                    class="form-control reg_input" name="regPass" required />
+                                                    class="form-control reg_input pass_show" name="regPass" required />
                                                 <label class="form-label" for="registerPassword">Password</label>
                                             </div>
 
                                             <!-- Repeat Password input -->
                                             <div class="form-outline mb-4">
-                                                <input type="password" id="registerRepeatPassword" name="regPass2"
+                                                <input type="password " id="registerRepeatPassword" name="regPass2"
                                                     class="form-control" required />
                                                 <label class="form-label" for="registerRepeatPassword">Repeat
                                                     password</label>
@@ -165,6 +164,7 @@
                                                         </label>
                                                     </div>
                                                 </div>
+                                                
 
                                                 <div class="col-md-5 d-flex justify-content-center">
                                                     <label for="gender" id="gender" class="form-label">Gender:<br>

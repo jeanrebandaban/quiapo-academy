@@ -195,7 +195,8 @@
 
             <img src="profile.png" class="img-thumbnail" alt="...">
             <h2 id = "tName">Name</h2>
-            <h6 id = "t-Id">id</h6>
+            <code><h3 id="t-Id">id</h3></code>
+            <p>Employee Number</p>
           </div>
         </div>
         <div class="col-md-5 border-right">
@@ -288,10 +289,11 @@
     var contactNo = user['contactNo'];
     var bday = user['bday'];
     var gender = user['gender'];
+    var empNo = user['empNo'];
 
     document.getElementById('teacherName').innerHTML = firstName + " " + lastName;
     document.getElementById('tName').innerHTML = firstName + " " + lastName;
-
+    document.getElementById('t-Id').innerHTML = empNo;
 
     document.getElementById("sname").placeholder = lastName;
     document.getElementById("name").placeholder = firstName;

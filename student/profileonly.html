@@ -202,7 +202,8 @@
 
             <img src="profile.png" class="img-thumbnail" alt="...">
             <h2 id="studentName">Name</h2>
-            <h6 id="studentId">id</h6>
+            <code><h3 id="studentId">id</h3></code>
+            <p>Student Number</p>
           </div>
         </div>
         <div class="col-md-5 border-right">
@@ -297,10 +298,12 @@
     var gender = user['gender'];
     var yearLevel = user['yearLevel'];
     var program = user['program'];
+    var studNo = user['studentNo'];
     // var uid = user['uid'];
 
     document.getElementById('studName').innerHTML = firstName + " " + lastName;
     document.getElementById('studentName').innerHTML = firstName + " " + lastName;
+    document.getElementById('studentId').innerHTML = studNo;
     // document.getElementById('studentId').innerHTML = uid;
     document.getElementById("sname").placeholder = lastName;
     document.getElementById("name").placeholder = firstName;
